@@ -142,7 +142,7 @@
   <button id="settingsBtn" title="Cài đặt"></button>
 
   <div id="settingsMenu">
-    <h3>Cài đặt</h3>
+    <h3>Cài đặt (beta)</h3>
     <div class="setting-option">
       <span>Nhạc nền</span>
       <input type="checkbox" id="musicToggle" checked>
@@ -252,7 +252,8 @@
 
 const bgMusic = new Audio("https://static.wikia.nocookie.net/tamingio/images/5/5c/Forest1.mp3");
 bgMusic.loop = true;
-bgMusic.play();
+bgMusic.volume = 0.5;
+if (musicOn) bgMusic.play();
 
     if (musicToggle.checked) bgMusic.play();
 
