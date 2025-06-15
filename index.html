@@ -8,7 +8,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       background-color: #f0f0f0;
-      cursor: url('https://static.wikia.nocookie.net/tamingio/images/a/ad/Bug-net.png'), auto; /* ← Thay URL này bằng ảnh con trỏ bạn muốn */
+      cursor: url('https://static.wikia.nocookie.net/tamingio/images/a/ad/Bug-net.png'), auto;
     }
 
     #game-area {
@@ -37,9 +37,7 @@
       font-weight: bold;
       font-size: 24px;
     }
-  </style>
-</head>
-<body>
+
     /* Nút răng cưa */
     #settingsBtn {
       position: fixed;
@@ -94,6 +92,7 @@
       <label>Chế độ tối: <input type="checkbox" id="darkModeToggle"></label>
     </div>
   </div>
+
   <h1>Hãy bắt bug</h1>
   <h2>Bấm vào bug để thu thập</h2>
   <p>Bug bắt được: <span id="score">0</span></p>
@@ -104,53 +103,53 @@
     const scoreDisplay = document.getElementById("score");
     let score = 0;
 
-    // Danh sách ảnh thay đổi mỗi lần bấm
     const imageList = [
-  'https://static.wikia.nocookie.net/tamingio/images/c/c2/Inventory-catch-0.png',
-  'https://static.wikia.nocookie.net/tamingio/images/1/12/Inventory-catch-1.png',
-  'https://static.wikia.nocookie.net/tamingio/images/9/99/Inventory-catch-2.png',
-  'https://static.wikia.nocookie.net/tamingio/images/f/f8/Inventory-catch-3.png',
-  'https://static.wikia.nocookie.net/tamingio/images/0/04/Inventory-catch-4.png',
-  'https://static.wikia.nocookie.net/tamingio/images/7/73/Inventory-catch-5.png',
-  'https://static.wikia.nocookie.net/tamingio/images/7/79/Inventory-catch-6.png',
-  'https://static.wikia.nocookie.net/tamingio/images/5/5d/Inventory-catch-7.png',
-  'https://static.wikia.nocookie.net/tamingio/images/6/68/Inventory-catch-8.png',
-  'https://static.wikia.nocookie.net/tamingio/images/6/61/Inventory-catch-9.png',
-  'https://static.wikia.nocookie.net/tamingio/images/2/2b/Inventory-catch-10.png',
-  'https://static.wikia.nocookie.net/tamingio/images/5/53/Inventory-catch-11.png',
-  'https://static.wikia.nocookie.net/tamingio/images/3/34/Inventory-catch-12.png',
-  'https://static.wikia.nocookie.net/tamingio/images/5/58/Inventory-catch-13.png',
-  'https://static.wikia.nocookie.net/tamingio/images/f/f3/Inventory-catch-14.png',
-  'https://static.wikia.nocookie.net/tamingio/images/f/fd/Inventory-catch-15.png',
-  'https://static.wikia.nocookie.net/tamingio/images/3/3c/Inventory-catch-16.png',
-  'https://static.wikia.nocookie.net/tamingio/images/2/2c/Inventory-catch-17.png',
-  'https://static.wikia.nocookie.net/tamingio/images/5/58/Inventory-catch-18.png',
-  'https://static.wikia.nocookie.net/tamingio/images/f/f7/Inventory-catch-19.png',
-  'https://static.wikia.nocookie.net/tamingio/images/d/d0/Inventory-catch-20.png',
-  'https://static.wikia.nocookie.net/tamingio/images/7/71/Inventory-catch-21.png',
-  'https://static.wikia.nocookie.net/tamingio/images/b/b9/Inventory-catch-22.png',
-  'https://static.wikia.nocookie.net/tamingio/images/1/17/Inventory-catch-23.png',
-  'https://static.wikia.nocookie.net/tamingio/images/c/c5/Inventory-catch-24.png',
-  'https://static.wikia.nocookie.net/tamingio/images/2/27/Inventory-catch-25.png',
-  'https://static.wikia.nocookie.net/tamingio/images/2/28/Inventory-catch-26.png',
-  'https://static.wikia.nocookie.net/tamingio/images/b/bc/Inventory-catch-27.png',
-  'https://static.wikia.nocookie.net/tamingio/images/c/cf/Inventory-catch-28.png',
-  'https://static.wikia.nocookie.net/tamingio/images/0/09/Inventory-catch-30.png',
-  'https://static.wikia.nocookie.net/tamingio/images/3/30/Inventory-catch-31.png',
-  'https://static.wikia.nocookie.net/tamingio/images/7/7d/Inventory-catch-32.png',
-  'https://static.wikia.nocookie.net/tamingio/images/7/72/Inventory-catch-33.png',
-  'https://static.wikia.nocookie.net/tamingio/images/6/61/Inventory-catch-34.png',
-  'https://static.wikia.nocookie.net/tamingio/images/b/b6/Inventory-catch-35.png',
-  'https://static.wikia.nocookie.net/tamingio/images/4/4b/Inventory-catch-36.png',
-  'https://static.wikia.nocookie.net/tamingio/images/6/63/Inventory-catch-37.png',
-  'https://static.wikia.nocookie.net/tamingio/images/8/81/Inventory-catch-38.png',
-  'https://static.wikia.nocookie.net/tamingio/images/0/03/Inventory-catch-39.png',
-  'https://static.wikia.nocookie.net/tamingio/images/c/ce/Inventory-catch-40.png',
-  'https://static.wikia.nocookie.net/tamingio/images/2/29/Inventory-catch-41.png',
-  'https://static.wikia.nocookie.net/tamingio/images/e/eb/Inventory-catch-42.png',
-  'https://static.wikia.nocookie.net/tamingio/images/3/3b/Inventory-catch-43.png',
-  'https://static.wikia.nocookie.net/tamingio/images/b/be/Inventory-catch-49.png'
-]
+      'https://static.wikia.nocookie.net/tamingio/images/c/c2/Inventory-catch-0.png',
+      'https://static.wikia.nocookie.net/tamingio/images/1/12/Inventory-catch-1.png',
+      'https://static.wikia.nocookie.net/tamingio/images/9/99/Inventory-catch-2.png',
+      'https://static.wikia.nocookie.net/tamingio/images/f/f8/Inventory-catch-3.png',
+      'https://static.wikia.nocookie.net/tamingio/images/0/04/Inventory-catch-4.png',
+      'https://static.wikia.nocookie.net/tamingio/images/7/73/Inventory-catch-5.png',
+      'https://static.wikia.nocookie.net/tamingio/images/7/79/Inventory-catch-6.png',
+      'https://static.wikia.nocookie.net/tamingio/images/5/5d/Inventory-catch-7.png',
+      'https://static.wikia.nocookie.net/tamingio/images/6/68/Inventory-catch-8.png',
+      'https://static.wikia.nocookie.net/tamingio/images/6/61/Inventory-catch-9.png',
+      'https://static.wikia.nocookie.net/tamingio/images/2/2b/Inventory-catch-10.png',
+      'https://static.wikia.nocookie.net/tamingio/images/5/53/Inventory-catch-11.png',
+      'https://static.wikia.nocookie.net/tamingio/images/3/34/Inventory-catch-12.png',
+      'https://static.wikia.nocookie.net/tamingio/images/5/58/Inventory-catch-13.png',
+      'https://static.wikia.nocookie.net/tamingio/images/f/f3/Inventory-catch-14.png',
+      'https://static.wikia.nocookie.net/tamingio/images/f/fd/Inventory-catch-15.png',
+      'https://static.wikia.nocookie.net/tamingio/images/3/3c/Inventory-catch-16.png',
+      'https://static.wikia.nocookie.net/tamingio/images/2/2c/Inventory-catch-17.png',
+      'https://static.wikia.nocookie.net/tamingio/images/5/58/Inventory-catch-18.png',
+      'https://static.wikia.nocookie.net/tamingio/images/f/f7/Inventory-catch-19.png',
+      'https://static.wikia.nocookie.net/tamingio/images/d/d0/Inventory-catch-20.png',
+      'https://static.wikia.nocookie.net/tamingio/images/7/71/Inventory-catch-21.png',
+      'https://static.wikia.nocookie.net/tamingio/images/b/b9/Inventory-catch-22.png',
+      'https://static.wikia.nocookie.net/tamingio/images/1/17/Inventory-catch-23.png',
+      'https://static.wikia.nocookie.net/tamingio/images/c/c5/Inventory-catch-24.png',
+      'https://static.wikia.nocookie.net/tamingio/images/2/27/Inventory-catch-25.png',
+      'https://static.wikia.nocookie.net/tamingio/images/2/28/Inventory-catch-26.png',
+      'https://static.wikia.nocookie.net/tamingio/images/b/bc/Inventory-catch-27.png',
+      'https://static.wikia.nocookie.net/tamingio/images/c/cf/Inventory-catch-28.png',
+      'https://static.wikia.nocookie.net/tamingio/images/0/09/Inventory-catch-30.png',
+      'https://static.wikia.nocookie.net/tamingio/images/3/30/Inventory-catch-31.png',
+      'https://static.wikia.nocookie.net/tamingio/images/7/7d/Inventory-catch-32.png',
+      'https://static.wikia.nocookie.net/tamingio/images/7/72/Inventory-catch-33.png',
+      'https://static.wikia.nocookie.net/tamingio/images/6/61/Inventory-catch-34.png',
+      'https://static.wikia.nocookie.net/tamingio/images/b/b6/Inventory-catch-35.png',
+      'https://static.wikia.nocookie.net/tamingio/images/4/4b/Inventory-catch-36.png',
+      'https://static.wikia.nocookie.net/tamingio/images/6/63/Inventory-catch-37.png',
+      'https://static.wikia.nocookie.net/tamingio/images/8/81/Inventory-catch-38.png',
+      'https://static.wikia.nocookie.net/tamingio/images/0/03/Inventory-catch-39.png',
+      'https://static.wikia.nocookie.net/tamingio/images/c/ce/Inventory-catch-40.png',
+      'https://static.wikia.nocookie.net/tamingio/images/2/29/Inventory-catch-41.png',
+      'https://static.wikia.nocookie.net/tamingio/images/e/eb/Inventory-catch-42.png',
+      'https://static.wikia.nocookie.net/tamingio/images/3/3b/Inventory-catch-43.png',
+      'https://static.wikia.nocookie.net/tamingio/images/b/be/Inventory-catch-49.png'
+    ];
+
     function randomPosition() {
       const x = Math.random() * (gameArea.clientWidth - 50);
       const y = Math.random() * (gameArea.clientHeight - 50);
@@ -181,6 +180,33 @@
     }
 
     spawnBox();
+
+    // Mở / đóng menu cài đặt
+    const settingsBtn = document.getElementById("settingsBtn");
+    const settingsMenu = document.getElementById("settingsMenu");
+
+    settingsBtn.addEventListener("click", () => {
+      settingsMenu.style.display = settingsMenu.style.display === "none" ? "block" : "none";
+    });
+
+    // Nhạc nền
+    const musicToggle = document.getElementById('musicToggle');
+    const bgMusic = new Audio("https://www.bensound.com/bensound-music/bensound-epic.mp3"); // <-- thay bằng nhạc của bạn
+    bgMusic.loop = true;
+    bgMusic.volume = 0.5;
+
+    if (musicToggle.checked) {
+      bgMusic.play();
+    }
+
+    musicToggle.addEventListener('change', () => {
+      if (musicToggle.checked) {
+        bgMusic.play();
+      } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+      }
+    });
   </script>
 </body>
 </html>
