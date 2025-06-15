@@ -250,9 +250,9 @@
       settingsMenu.style.display = settingsMenu.style.display === "none" ? "block" : "none";
     });
 
-    const bgMusic = new Audio("https://tamingio.fandom.com/wiki/File:Forest1.mp3");
-    bgMusic.loop = true;
-    bgMusic.volume = 0.5;
+const bgMusic = new Audio("https://static.wikia.nocookie.net/tamingio/images/5/5c/Forest1.mp3");
+bgMusic.loop = true;
+bgMusic.play();
 
     if (musicToggle.checked) bgMusic.play();
 
