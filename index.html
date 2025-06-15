@@ -298,28 +298,34 @@ if (musicToggle.checked) bgMusic.play()
       return false;
     }
   });
-  // Hiển thị thành tựu sau bug đầu tiên
-  let daHienThanhTuu = false;
-  const thanhTuuImgURL = "https://files.catbox.moe/9gmxgt.png"; // ← THAY URL THÀNH TỰU VÀO ĐÂY
+function hienThanhTuu() {
+  const img = document.createElement("img");
+  img.src = thanhTuuImgURL;
+  img.style.position = "fixed";
+  img.style.top = "50%";
+  img.style.left = "50%";
+  img.style.transform = "translate(-50%, -50%)";
+  img.style.zIndex = 1000;
+  img.style.width = "350px"; // tùy chỉnh size như bạn muốn
+  img.style.height = "auto";
 
-  function hienThanhTuu() {
-    const img = document.createElement("img");
-    img.src = thanhTuuImgURL;
-    img.style.position = "fixed";
-    img.style.top = "50%";
-    img.style.left = "50%";
-    img.style.transform = "translate(-50%, -50%)";
-    img.style.zIndex = 1000;
-    img.style.width = "200px";
-    img.style.height = "auto";
-    img.id = "thanhTuu";
+  // 👉 Hiệu ứng fade-in
+  img.style.opacity = "0";
+  img.style.transition = "opacity 1s ease";
 
-    document.body.appendChild(img);
+  img.id = "thanhTuu";
 
-    setTimeout(() => {
-      img.remove();
-    }, 5000);
-  }
+  document.body.appendChild(img);
+
+  // ⚡ Kích hoạt hiệu ứng mờ dần rồi hiện rõ
+  setTimeout(() => {
+    img.style.opacity = "1";
+  }, 10); // để đảm bảo transition được kích hoạt
+
+  // ⏱️ Tự động biến mất sau 5 giây
+  setTimeout(() => {
+    img.remove();
+  }, 5000);
   </script>
 </body>
 </html>
