@@ -2,13 +2,13 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Dùng vượt bắt bug</title>
+  <title>Bắt bug taming io</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       background-color: #f0f0f0;
-      cursor: url('https://static.wikia.nocookie.net/tamingio/images/a/ad/Bug-net.png/revision/latest?cb=20231012010159'), auto; /* ← Thay URL này bằng ảnh con trỏ bạn muốn */
+      cursor: url('https://static.wikia.nocookie.net/tamingio/images/a/ad/Bug-net.png'), auto; /* ← Thay URL này bằng ảnh con trỏ bạn muốn */
     }
 
     #game-area {
@@ -40,6 +40,60 @@
   </style>
 </head>
 <body>
+    /* Nút răng cưa */
+    #settingsBtn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/3524/3524659.png');
+      background-size: cover;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    /* Menu cài đặt */
+    #settingsMenu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      right: 10px;
+      width: 250px;
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 998;
+      text-align: left;
+    }
+
+    #settingsMenu h3 {
+      margin-top: 0;
+    }
+
+    .setting-option {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Nút cài đặt -->
+  <button id="settingsBtn" title="Cài đặt"></button>
+
+  <!-- Menu cài đặt -->
+  <div id="settingsMenu">
+    <h3>Cài đặt</h3>
+    <div class="setting-option">
+      <label>Nhạc nền: <input type="checkbox" id="musicToggle" checked></label>
+    </div>
+    <div class="setting-option">
+      <label>Chế độ tối: <input type="checkbox" id="darkModeToggle"></label>
+    </div>
+  </div>
   <h1>Hãy bắt bug</h1>
   <p>Bug bắt được: <span id="score">0</span></p>
   <div id="game-area"></div>
@@ -94,7 +148,6 @@
   'https://static.wikia.nocookie.net/tamingio/images/2/29/Inventory-catch-41.png',
   'https://static.wikia.nocookie.net/tamingio/images/e/eb/Inventory-catch-42.png',
   'https://static.wikia.nocookie.net/tamingio/images/3/3b/Inventory-catch-43.png',
-  'https://static.wikia.nocookie.net/tamingio/images/f/fa/Inventory-catch-48.png',
   'https://static.wikia.nocookie.net/tamingio/images/b/be/Inventory-catch-49.png'
 ]
     function randomPosition() {
