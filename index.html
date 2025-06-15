@@ -9,6 +9,12 @@
       text-align: center;
       background-color: #f0f0f0;
       cursor: url('https://static.wikia.nocookie.net/tamingio/images/a/ad/Bug-net.png'), auto;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background-color: #1e1e1e;
+      color: #fff;
     }
 
     #game-area {
@@ -18,6 +24,10 @@
       border: 2px solid #000;
       position: relative;
       background-color: white;
+    }
+
+    body.dark #game-area {
+      background-color: #333;
     }
 
     .box {
@@ -33,12 +43,17 @@
       color: #333;
     }
 
+    body.dark h1,
+    body.dark h2,
+    body.dark p {
+      color: #fff;
+    }
+
     #score {
       font-weight: bold;
       font-size: 24px;
     }
 
-    /* Nút răng cưa */
     #settingsBtn {
       position: fixed;
       top: 10px;
@@ -53,7 +68,6 @@
       z-index: 999;
     }
 
-    /* Menu cài đặt */
     #settingsMenu {
       display: none;
       position: fixed;
@@ -69,6 +83,12 @@
       text-align: left;
     }
 
+    body.dark #settingsMenu {
+      background-color: #2b2b2b;
+      color: #fff;
+      border-color: #555;
+    }
+
     #settingsMenu h3 {
       margin-top: 0;
     }
@@ -79,10 +99,8 @@
   </style>
 </head>
 <body>
-  <!-- Nút cài đặt -->
   <button id="settingsBtn" title="Cài đặt"></button>
 
-  <!-- Menu cài đặt -->
   <div id="settingsMenu">
     <h3>Cài đặt</h3>
     <div class="setting-option">
@@ -103,7 +121,7 @@
     const scoreDisplay = document.getElementById("score");
     let score = 0;
 
-    const imageList = [
+    const imageList = [ // danh sách bug giữ nguyên
       'https://static.wikia.nocookie.net/tamingio/images/c/c2/Inventory-catch-0.png',
       'https://static.wikia.nocookie.net/tamingio/images/1/12/Inventory-catch-1.png',
       'https://static.wikia.nocookie.net/tamingio/images/9/99/Inventory-catch-2.png',
@@ -181,23 +199,20 @@
 
     spawnBox();
 
-    // Mở / đóng menu cài đặt
     const settingsBtn = document.getElementById("settingsBtn");
     const settingsMenu = document.getElementById("settingsMenu");
+    const musicToggle = document.getElementById('musicToggle');
+    const darkModeToggle = document.getElementById('darkModeToggle');
 
     settingsBtn.addEventListener("click", () => {
       settingsMenu.style.display = settingsMenu.style.display === "none" ? "block" : "none";
     });
 
-    // Nhạc nền
-    const musicToggle = document.getElementById('musicToggle');
-    const bgMusic = new Audio("https://www.bensound.com/bensound-music/bensound-epic.mp3"); // <-- thay bằng nhạc của bạn
+    const bgMusic = new Audio("https://www.bensound.com/bensound-music/bensound-epic.mp3");
     bgMusic.loop = true;
     bgMusic.volume = 0.5;
 
-    if (musicToggle.checked) {
-      bgMusic.play();
-    }
+    if (musicToggle.checked) bgMusic.play();
 
     musicToggle.addEventListener('change', () => {
       if (musicToggle.checked) {
@@ -206,6 +221,10 @@
         bgMusic.pause();
         bgMusic.currentTime = 0;
       }
+    });
+
+    darkModeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark', darkModeToggle.checked);
     });
   </script>
 </body>
