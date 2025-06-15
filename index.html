@@ -253,7 +253,7 @@
 const bgMusic = new Audio("https://static.wikia.nocookie.net/tamingio/images/5/5c/Forest1.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.5;
-if (musicOn) bgMusic.play();
+if (musicToggle.checked) bgMusic.play()
 
     if (musicToggle.checked) bgMusic.play();
 
@@ -269,6 +269,23 @@ if (musicOn) bgMusic.play();
     darkModeToggle.addEventListener('change', () => {
       document.body.classList.toggle('dark', darkModeToggle.checked);
     });
+  // Vô hiệu hóa chuột phải
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Chặn tổ hợp phím mở DevTools hoặc xem mã nguồn
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.key === 'F12' ||                             // F12
+      (e.ctrlKey && e.key.toLowerCase() === 'u') ||  // Ctrl + U
+      (e.ctrlKey && e.shiftKey && e.key === 'I') ||  // Ctrl + Shift + I
+      (e.ctrlKey && e.shiftKey && e.key === 'J')     // Ctrl + Shift + J
+    ) {
+      e.preventDefault();
+      return false;
+    }
+  });
   </script>
 </body>
 </html>
