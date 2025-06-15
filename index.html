@@ -60,7 +60,7 @@
   right: 10px;
   width: 40px;
   height: 40px;
-  background-image: url('https://taming.io/img/interface/settings.png');
+  background-image: url('https://cdn-icons-png.flaticon.com/512/3524/3524659.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -162,7 +162,7 @@
   <span id="score">0</span>
   <img src="https://taming.io/img/interface/inventory-icon.png" 
        alt="Bug Icon" 
-       style="width: 24px; height: 24px; vertical-align: middle; margin-left: 8px;"></p>
+       style="width: 25px; height: 25px; vertical-align: middle; margin-left: 9px;"></p>
   <div id="game-area"></div>
 
   <script>
@@ -236,12 +236,17 @@
       box.style.top = y + "px";
       box.style.backgroundImage = `url('${randomImage()}')`;
 
-      box.onclick = () => {
-        score++;
-        scoreDisplay.textContent = score;
-        box.remove();
-        spawnBox();
-      };
+box.onclick = () => {
+  score++;
+  scoreDisplay.textContent = score;
+  box.remove();
+  spawnBox();
+
+  if (!daHienThanhTuu) {
+    hienThanhTuu();
+    daHienThanhTuu = true;
+  }
+};
 
       gameArea.appendChild(box);
     }
@@ -293,6 +298,28 @@ if (musicToggle.checked) bgMusic.play()
       return false;
     }
   });
+  // Hiển thị thành tựu sau bug đầu tiên
+  let daHienThanhTuu = false;
+  const thanhTuuImgURL = "https://files.catbox.moe/9gmxgt.png"; // ← THAY URL THÀNH TỰU VÀO ĐÂY
+
+  function hienThanhTuu() {
+    const img = document.createElement("img");
+    img.src = thanhTuuImgURL;
+    img.style.position = "fixed";
+    img.style.top = "50%";
+    img.style.left = "50%";
+    img.style.transform = "translate(-50%, -50%)";
+    img.style.zIndex = 1000;
+    img.style.width = "200px";
+    img.style.height = "auto";
+    img.id = "thanhTuu";
+
+    document.body.appendChild(img);
+
+    setTimeout(() => {
+      img.remove();
+    }, 5000);
+  }
   </script>
 </body>
 </html>
