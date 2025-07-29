@@ -152,7 +152,7 @@
       <span>Chế độ tối</span>
       <input type="checkbox" id="darkModeToggle">
 <div class="setting-option">
-  <span>VIP (Đang trong beta)</span>
+  <span>VIP (x2 bug)</span>
   <input type="checkbox" id="vipToggle">
 </div>
   <h1>Hãy bắt bug</h1>
@@ -234,17 +234,17 @@
       box.style.top = y + "px";
       box.style.backgroundImage = `url('${randomImage()}')`;
 
-      box.onclick = () => {
-        score++;
-        scoreDisplay.textContent = score;
-        box.remove();
-        spawnBox();
-      };
+box.onclick = () => {
+  const vipEnabled = document.getElementById("vipToggle").checked;
+  const pointsToAdd = vipEnabled ? 2 : 1;
 
-      gameArea.appendChild(box);
-    }
+  score += pointsToAdd;
+  scoreDisplay.textContent = score;
 
-    spawnBox();
+  box.remove();
+  spawnBox();
+};
+
 
     const settingsBtn = document.getElementById("settingsBtn");
     const settingsMenu = document.getElementById("settingsMenu");
